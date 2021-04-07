@@ -44,3 +44,4 @@ for i in range(len(count_votes)):
         count_winner = count_votes[i]
         winner = list_candidates[i]
 print (winner)
+#ok, now just have to write the output file
