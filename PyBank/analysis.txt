@@ -1,0 +1,9 @@
+Here is your financial analysis
+Get ready, it's gonna be a fun one!
+--------------------------------------
+Total number of months: 86
+Your total profits were: $38382578
+The average change monthly was: $7803
+Your greatest increase was: Feb-12   $1926159
+Your greatest decrease was: Sep-13   $-2196167
+And there you have it. Have a great day!
