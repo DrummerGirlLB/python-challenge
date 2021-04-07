@@ -7,14 +7,19 @@
 import os
 import csv
 
+
 csv_file = os.path.join('PyPollCSV.csv')
-outputfile = os.path.join("PyPollAnalysis.txt")
+csv_output = os.path.join("PyPollAnalysis.txt")
 
 list_candidates = []
 count_votes = []
 percent_votes = []
 total_votes = 0
 count_winner = 0
+
+def fixtopercent(num):
+    num = "{:.3%}".format(num)
+    return num
 
 with open(csv_file, newline="") as csvfile:
     reader = csv.reader(csvfile, delimiter=",")
@@ -43,5 +48,36 @@ for i in range(len(count_votes)):
     if count_votes[i] > count_winner:
         count_winner = count_votes[i]
         winner = list_candidates[i]
-print (winner)
+#print (winner)
 #ok, now just have to write the output file
+#  ```text
+#  Election Results
+#  -------------------------
+#  Total Votes: 3521001
+#  -------------------------
+#  Khan: 63.000% (2218231)
+#  Correy: 20.000% (704200)
+#  Li: 14.000% (492940)
+#  O'Tooley: 3.000% (105630)
+#  -------------------------
+#  Winner: Khan
+#  -------------------------
+#  ```
+with open(csv_output, 'w') as textfile:
+    textfile.write(f" Election Results! \n"
+            f"*********************** \n"
+            f"We received {total_votes} total votes\n"
+            f"*********************** \n"
+            )
+        
+    for i in range(len(list_candidates)):
+        textfile.write(f"{list_candidates[i]}: {fixtopercent(percent_votes[i])} ({count_votes[i]}) \n")
+    
+    textfile.write(f"***************** \n"
+        f"The winner is: {winner}\n"
+        f"***************** \n"
+        )
+
+with open (csv_output, 'r') as analysis:
+    content = analysis.read()
+print (content)
